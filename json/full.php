@@ -16,4 +16,22 @@ $totalUsers = $db->getValue ("users", "count(id)");
 $totalServers = $db->getValue ("servers", "count(id)");
 # echo "TOTAL SERVERS : $totalServers";
 # END TOTAL SERVERS
+
+
+header('Content-Type: application/json');
+$json_array = array(
+    "FULL" => array(
+        "ADMINS" => array(
+            "TOTAL" => "{$totalAdmins}"
+        ),
+        "USERS" => array(
+            "TOTAL" => "{$totalUsers}"
+        ),
+        "SERVERS" => array(
+            "TOTAL" => "{$totalServers}"
+        ),
+    ),
+);
+$full = json_encode($json_array);
+echo $full;
 ?>
