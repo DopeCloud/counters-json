@@ -7,7 +7,7 @@ $totalAdmins = $db->getValue ("users", "count(id)");
 # END TOTAL ADMINS
 
 # TOTAL USERS
-$db->where ("is_admin", 0);
+$db->where ("is_valid_user", 1);
 $totalUsers = $db->getValue ("users", "count(id)");
 # echo "TOTAL USERS : $totalUsers";
 # END TOTAL USERS
@@ -17,8 +17,6 @@ $totalServers = $db->getValue ("servers", "count(id)");
 # echo "TOTAL SERVERS : $totalServers";
 # END TOTAL SERVERS
 
-
-header('Content-Type: application/json');
 $json_array = array(
     "FULL" => array(
         "ADMINS" => array(
